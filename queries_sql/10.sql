@@ -1,0 +1,8 @@
+-- 10.Determine the top 3 most ordered pizza types based on revenue.-- 
+select pizza_types.name,round(sum(order_details.quantity*pizzas.price),1) 
+as revenue 
+from
+pizzas join pizza_types on pizzas.pizza_type_id = pizza_types.pizza_type_id
+join order_details on 
+order_details.pizza_id=pizzas.pizza_id 
+group by pizza_types.name order by revenue desc;
